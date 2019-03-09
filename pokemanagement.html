@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Pokemon</title>
+    <!-- Bootstrap core CSS -->
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="css/new-age.css" rel="stylesheet">
+  </head>
+
+  <body id="page-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a id="logo" class="navbar-brand js-scroll-trigger" href="index.html">Logo</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+    <div class="container">
+    <section class="pokeman" id="pokeman">
+    <div class="col-12">
+        <div class="input-group mb-3">
+            <button class="btn btn-primary mx-auto" type="button" onclick="getPokemon()">Search for Pokemon around you</button>
+            <div class="input-group-append">
+            </div>
+        </div>
+    </div>
+
+    <div class="card mx-auto" style="width: 18rem;">
+      <div class="card-img-top mx-auto text-center" id="pokeimg" alt="Card image cap"></div>
+      <div class="card-body">
+        <h5 class="card-title text-uppercase text-center" id="pokename"></h5>
+        <label class="col-sm-6 col-form-label"> Id:</label>
+        <p class="card-text col-sm-5" id="pokeid"></p>
+        <label class="col-sm-6 col-form-label">Weight:</label>
+        <p class="card-text col-sm-5" id="pokeweight"></p>
+        <label class="col-sm-6 col-form-label">Height:</label>
+        <p class="card-text col-sm-5" id="pokeheight"></p>
+        <a href="#" class="btn btn-primary mx-auto" id="pokeCapture" onclick="capturePokemon()" >
+          <img src="img/pokeBall.png" class="img-fluid" alt=""> Capture Pokemon</a>
+      </div>
+    </div>
+    <br>
+    <h4>My Pokemon</h4>
+    <div class="row">
+        <div class="col">
+            <h5 id="total" class="float-right"></h5>
+            <table class="table table-striped" id="table">
+                <thead id="thead">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Weight</th>
+                        <th scope="col">Height</th>
+                        <th scope="col">Avatar</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+      </div>
+    <!-- Bootstrap core JavaScript -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+    <script src="js/pokemanagement.js"></script>
+	<script src="node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
+</div>
+
+  </body>
+
+</html>
