@@ -78,16 +78,8 @@ function capturePokemon() {
   let newPoke = new Poke(getE("pokename"), getE("pokeid"), getE("pokeweight"), getE("pokeheight"), getE("pokeimg"));
   mypokes.push(newPoke);
   updateTable();
-<<<<<<< HEAD
   clearCard();
-=======
-  document.getElementById("pokeimg").innerHTML = '';
-  document.getElementById("pokename").innerHTML = '';
-  document.getElementById("pokeid").innerHTML = '';
-  document.getElementById("pokeweight").innerHTML = '';
-  document.getElementById("pokeheight").innerHTML = '';
   toast('success', 'bottom-end');
->>>>>>> 62b1fba3a6e5f8fd03a58a1e21a1e8c3567f7269
 }
 
 function Poke(a, b, c, d, e) {
