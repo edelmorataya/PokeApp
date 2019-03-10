@@ -25,6 +25,38 @@ function showresult(pokeresults){
   let pokeimg = $('#pokeimg');
   pokeimg.append(img);
 
+
+
+
+}
+
+function getSpecificPokemon(){
+  let searchedPokemon = $('#nameIdPokemon').val();
+  $.ajax({
+    url: "http://pokeapi.co/api/v2/pokemon/"+searchedPokemon+"/",
+    success: (result, status, xhr) =>
+            {
+                let pokemon = result;
+                showresult(pokemon);
+            },
+    error: (xhr, status, error) =>
+            {
+                alert("Not found Pokemon, try again...");
+            }
+});
+}
+
+function showresult(pokeresults){
+  $('#pokename').html(pokeresults.name);
+  $('#pokeid').html(pokeresults.id);
+  $('#pokeweight').html(pokeresults.weight);
+  $('#pokeheight').html(pokeresults.height);
+  $('.pokepic img:first').remove();
+  let img = $("<img></img>");
+  img.attr('src',pokeresults.sprites.front_default);
+  let pokeimg = $('#pokeimg');
+  pokeimg.append(img);
+
 }
 
 let mypokes = []
@@ -33,16 +65,20 @@ function getE(id){
   return document.getElementById(id).innerHTML;
 }
 
+function clearCard(){
+  $('#pokename').html("");
+  $('#pokeid').html("");
+  $('#pokeweight').html("");
+  $('#pokeheight').html("");
+  $('#pokeimg').html("");
+
+}
 
 function capturePokemon() {
   let newPoke = new Poke(getE("pokename"), getE("pokeid"), getE("pokeweight"), getE("pokeheight"), getE("pokeimg"));
   mypokes.push(newPoke);
   updateTable();
-  document.getElementById("pokeimg").innerHTML = '';
-  document.getElementById("pokename").innerHTML = '';
-  document.getElementById("pokeid").innerHTML = '';
-  document.getElementById("pokeweight").innerHTML = '';
-  document.getElementById("pokeheight").innerHTML = '';
+  clearCard();
 }
 
 function Poke(a, b, c, d, e) {
