@@ -1,42 +1,30 @@
 function getPokemon(){
-  let request = new XMLHttpRequest();
   let query = Math.floor(Math.random() * 1000) + 1;
-  request.open('GET', "http://pokeapi.co/api/v2/pokemon/"+query+"/",true);
-  crossOrigin: null;
-  request.onreadystatechange = function (aEvt){
-      if (request.readyState == 4) {
-          if (request.status == 200) {
-              let pokemon = new Array(JSON.parse(request.response));
-              showResults(pokemon);
-          }
-          else {
-              alert("Not found Pokemon, try again...")
-          }
-      }
-  };
-  request.send(null);
+  $.ajax({
+    url: "http://pokeapi.co/api/v2/pokemon/"+query+"/",
+    success: (result, status, xhr) =>
+            {
+                let pokemon = result;
+                showresult(pokemon);
+            },
+    error: (xhr, status, error) =>
+            {
+                alert("Not found Pokemon, try again...");
+            }
+});
 }
 
+function showresult(pokeresults){
+  $('#pokename').html(pokeresults.name);
+  $('#pokeid').html(pokeresults.id);
+  $('#pokeweight').html(pokeresults.weight);
+  $('#pokeheight').html(pokeresults.height);
+  $('.pokepic img:first').remove();
+  let img = $("<img></img>");
+  img.attr('src',pokeresults.sprites.front_default);
+  let pokeimg = $('#pokeimg');
+  pokeimg.append(img);
 
-function showResults(pokeres) {
-    console.log(pokeres);
-
-    pokeres.forEach((poke) => {
-
-
-        document.getElementById("pokename").innerHTML = poke.name;
-        document.getElementById("pokeid").innerHTML = poke.id;
-        document.getElementById("pokeweight").innerHTML = poke.weight;
-        document.getElementById("pokeheight").innerHTML = poke.height;
-        let img = document.createElement("img");
-
-        img.src = poke.sprites.front_default;
-
-
-        let pokeimg = document.getElementById("pokeimg");
-        pokeimg.appendChild(img);
-
-    });
 }
 
 let mypokes = []
