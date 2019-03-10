@@ -43,6 +43,7 @@ function capturePokemon() {
   document.getElementById("pokeid").innerHTML = '';
   document.getElementById("pokeweight").innerHTML = '';
   document.getElementById("pokeheight").innerHTML = '';
+  toast('success', 'bottom-end');
 }
 
 function Poke(a, b, c, d, e) {
